@@ -180,6 +180,28 @@ Confirm the web application is successfully deployed and accessible.
 
 ---
 
+## Infrastructure as Code with Terraform
+
+Besides the manual implementation detailed in the steps above, this project includes a complete Infrastructure as Code alternative using Terraform. Located in the `terraform/` directory, the configuration automates the entire AWS infrastructure setup, allowing for quick and consistent deployments.
+
+The Terraform code is structured modularly across separate files for clarity and ease of maintenance:
+- Core configuration in `provider.tf` and customizable variables in `variables.tf`
+- Network foundation with `vpc.tf`, `subnets.tf`, `gateways.tf`, and `route_tables.tf`
+- Security and access controls in `security_groups.tf`
+- Compute resources defined in `ec2.tf`
+- Load balancing setup in `load_balancer.tf`
+- Key outputs provided in `outputs.tf`
+
+This automated approach brings significant benefits for infrastructure management:
+- Ensures consistent deployments across different environments
+- Enables version control for infrastructure changes
+- Allows easy customization through variable adjustments
+- Minimizes manual configuration errors and speeds up setup time
+
+To deploy using Terraform, change to the `terraform/` directory, run `terraform init` to prepare the environment, and execute `terraform apply` to build the infrastructure. Adjust the default values in `variables.tf` to match your specific needs, such as different regions or instance types.
+
+---
+
 ## Key Features
 
 - **Secure Network Architecture**: Utilizes private subnets and controlled access patterns
@@ -203,18 +225,6 @@ Confirm the web application is successfully deployed and accessible.
 - Application deployment in cloud environments
 - Network traffic routing and firewall configurations
 - AWS resource interdependencies and deployment sequencing
-
----
-
-## Future Improvements
-
-- Implement Infrastructure as Code using Terraform or AWS CloudFormation
-- Add Auto Scaling Groups for dynamic resource management
-- Integrate monitoring and logging with AWS CloudWatch
-- Implement CI/CD pipelines for automated deployments
-- Add database layer with RDS in private subnets
-- Configure SSL/TLS certificates for secure HTTPS access
-- Implement backup and disaster recovery strategies
 
 ---
 
